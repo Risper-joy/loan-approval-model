@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 10px;
+    background-color: #f9f9f9; /* Light background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50; /* Green text */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #4CAF50; /* Green border */
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+h2 {
+    text-align: center;
+    color: #4CAF50; /* Green text for prediction */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Approval Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="income">Income:</label>
+            <input type="number" step="0.01" id="income" name="income" required>
+
+            <label for="credit_score">Credit Score:</label>
+            <input type="number" id="credit_score" name="credit_score" required>
+
+            <label for="debt_ratio">Debt Ratio:</label>
+            <input type="number" step="0.01" id="debt_ratio" name="debt_ratio" required>
+
+            <label for="loan_amount">Loan Amount:</label>
+            <input type="number" step="0.01" id="loan_amount" name="loan_amount" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
